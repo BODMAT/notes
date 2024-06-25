@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 16px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*Миксин adaptiv-font*/
+/*--------------------*/
+/*Ширина полотна макета без px*/
+body {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  color: #000;
+  font-weight: 400;
+  background-color: #fff;
+}
+@media (max-width: 767px) {
+  body {
+    font-size: calc(18px + 6.8 * (100vw - 320px) / 1200);
+  }
+}
+@media (min-width: 767px) {
+  body {
+    font-size: calc(18px + 4 * 100vw / 1200);
+  }
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.fullscreen img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.header {
+  flex: 0 1 100px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 2px solid #000;
+}
+.header img {
+  width: 40px;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.header__logo:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.header__text {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.swiper {
+  position: static;
+}
+.swiper__buttons {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  top: 30px;
+  right: 15px;
+}
+.swiper__button-prev img, .swiper__button-next img {
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.swiper__button-prev img:hover, .swiper__button-next img:hover {
+  transform: scale(1.1);
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+  font-size: 0;
+}
+
+.main {
+  padding: 0 15px;
+}
+.main__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.main__search {
+  padding: 4px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid #000;
+  display: flex;
+}
+.main__input {
+  padding: 5px;
+  width: 100%;
+}
+.main__button {
+  padding-left: 5px;
+  background-color: #fff;
+  border-left: 2px solid #000;
+}
+.main__button img {
+  width: 30px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.main__button img:hover {
+  transform: scale(1.1);
+}
+.main__buttons {
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+  margin-left: 10px;
+}
+.main__filter {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid #000;
+  max-width: 38px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.main__filter img {
+  padding-right: 7px;
+  width: 42px;
+}
+.main__filter-by {
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+  font-weight: 500;
+  overflow: hidden;
+  opacity: 0;
+  position: relative;
+  left: -100%;
+}
+.main__filter:hover {
+  background-color: #fff;
+  max-width: 110px;
+}
+.main__filter:hover .main__filter-by {
+  padding: 0 4px;
+  opacity: 1;
+  position: relative;
+  left: 0;
+}
+.main__add-note {
+  margin-right: 4px;
+  background-color: transparent;
+  padding: 0 2px;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.main__add-note img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: transparent;
+}
+.main__add-note:hover {
+  transform: rotate(360deg);
+}
+.main__add-note:hover img {
+  border-radius: 50%;
+  background-color: #fff;
+}

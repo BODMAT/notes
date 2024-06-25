@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/x-icon" rel="shortcut icon" href="img/favicon.ico">
+    <link type="image/svg+xml" rel="icon" href="img/logo.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Notes</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <a href="" class="header__logo">
+                <img src="img/logo.svg" alt="logo">
+                <h1 class="header__text">Notes</h1>
+            </a>
+        </header>
+        <main class="main">
+            <div class="swiper">
+                <div class="swiper-wrapper data-spollers">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="main__menu">
+                            <form id="search" action="#" class="main__search">
+                                <input type="text" required class="main__input" placeholder="Find note" form="search">
+                                <button type="submit" class="main__button" form="search">
+                                    <img src="img/lupa.svg" alt="lupa">
+                                </button>
+                            </form>
+                            <div class="main__buttons">
+                                <button class="main__filter">
+                                    <img src="img/filter.svg" alt="filter">
+                                    <div class="main__filter-by">By date</div>
+                                </button>
+                                <button class="main__add-note">
+                                    <img src="img/add-note.svg" alt="add">
+                                </button>
+                            </div>
+                        </div>
+                        Slide 1
+                    </div>
+                    <div class="swiper-slide">Slide 2</div>
+                </div>
+
+                <div class="swiper__buttons">
+                    <div class="swiper-button-prev swiper__button-prev">
+                        <img src="img/notes.svg" alt="notes">
+                    </div>
+                    <div class="swiper-button-next swiper__button-next">
+                        <img src="img/tasks.svg" alt="tasks">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="fullscreen">
+        <div class="fullscreen__filter"></div>
+        <img src="img/background.jpg" alt="background">
+    </div>
+
+    <script type="module" src="js/swiper.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/accordeon.js"></script>
+</body>
+
+</html>

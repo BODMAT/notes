@@ -1,0 +1,214 @@
+@import "_nullstyle";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+$maxWidth: 1200;
+/*Ширина полотна макета без px*/
+@mixin adaptiv-font($pcSize, $mobSize) { 
+$addSize: $pcSize - $mobSize;
+$addMobSize: $addSize + $addSize * 0.7; 
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize}* ((100vw - 320px) / #{$maxWidth}));
+    }
+    @media (min-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    }
+}
+//================================================================================================
+body {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    @include adaptiv-font (22, 18);
+    color: #000;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.fullscreen {
+    & img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}
+
+//================================================================================================
+.header {
+    flex: 0 1 100px;
+    & img {
+        width: 40px;
+    }
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 2px solid #000;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+        &:hover {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &__text {
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #000;
+    }
+}
+
+//================================================================================================
+.main {
+    flex: 1 1 auto;
+}
+
+.swiper {
+    position: static;
+
+    &__buttons {
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        top: 30px;
+        right: 15px;
+    }
+
+    &__button-prev, &__button-next {
+        & img {
+            transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 0;
+}
+
+//================================================================================================
+
+.main {
+    padding: 0 15px;
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    &__search {
+        padding: 4px;
+        border-radius: 5px;
+        background-color: #fff;
+        border: 2px solid #000;
+        display: flex;
+    }
+
+    &__input {
+        padding: 5px;
+        width: 100%;
+    }
+
+    &__button {
+        padding-left: 5px;
+        background-color: #fff;
+        border-left: 2px solid #000;
+        & img {
+            width: 30px;
+            transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 10px;
+        padding: 5px 0;
+        margin-left: 10px;
+    }
+
+    &__filter {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 2px solid #000;
+
+        & img {
+            padding-right: 7px;
+            width: 42px;
+        }
+
+        &-by {
+            transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            font-weight: 500;
+
+            overflow: hidden;
+            opacity: 0;
+            position: relative;
+            left: -100%;
+        }
+        max-width: 38px;
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+
+        &:hover{
+            background-color: #fff;
+            max-width: 110px;
+            .main__filter-by{
+                padding: 0 4px; 
+                opacity: 1;
+                position: relative;
+                left: 0;
+            }
+        }
+    }
+
+    &__add-note {
+        margin-right: 4px;
+        background-color: transparent;
+        padding: 0 2px;
+
+        & img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            background-color: transparent;
+        }
+
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+
+        &:hover {
+            & img {
+                border-radius: 50%;
+                background-color: #fff;
+            }
+            transform: rotate(360deg);
+        }
+    }
+}
