@@ -39,7 +39,7 @@ body {
 
 .fullscreen {
     & img {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
         top: 0;
@@ -111,7 +111,7 @@ body {
 //================================================================================================
 
 .main {
-    padding: 0 15px;
+    padding: 0 30px;
 
     &__menu {
         display: flex;
@@ -179,7 +179,20 @@ body {
 
         &:hover{
             background-color: #fff;
-            max-width: 110px;
+            max-width: 120px;
+            .main__filter-by{
+                padding: 0 4px; 
+                opacity: 1;
+                position: relative;
+                left: 0;
+            }
+        }
+        &:active {
+            background-color: #00000083;
+        }
+        @media (max-width: 479.98px) {
+            background-color: #fff;
+            max-width: 120px;
             .main__filter-by{
                 padding: 0 4px; 
                 opacity: 1;
@@ -210,5 +223,103 @@ body {
             }
             transform: rotate(360deg);
         }
+        &:active img {
+            background-color: #00000083;
+        }
     }
+}
+
+//================================================================================================
+.main {
+
+    &__notes {
+    }
+
+    &__note {
+        display: flex;
+        flex-direction: column;
+
+        background-color: #8a8a8a89;
+        border: 2px solid #000;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include adaptiv-font (24, 20);
+    }
+
+	&__top-buttons {
+        padding-left: 3px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+	}
+
+	&__delete {
+        background-color: transparent;
+        width: 38px;
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            &:hover {
+                transform: scale(1.1);
+            }
+	}
+
+
+    &__change {
+        background-color: transparent;
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            &:hover {
+                transform: scale(1.1);
+            }
+    }
+
+    &__text {
+        line-height: 1.2;
+        margin-bottom: 8px;
+        @include adaptiv-font (20, 16);
+    }
+
+    &__date {
+        font-weight: 500;
+        @include adaptiv-font (18, 14);
+    }
+}
+
+.smaller-text {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем текст, который не помещается в блок */
+    text-overflow: ellipsis; /* Добавляем троеточие в конце обрезанного текста */
+    width: 100%; /* Задаем фиксированную ширину блока */
+}
+
+.large-textarea {
+    margin-bottom: 8px;
+    @include adaptiv-font (20, 16);
+    background-color: #ffffff22;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 5px;
+}
+
+.small-input {
+    margin-bottom: 5px;
+    font-weight: 700;
+    @include adaptiv-font (20, 16);
+    background-color: #ffffff22;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    width: 50%;
+    padding: 5px;
 }
