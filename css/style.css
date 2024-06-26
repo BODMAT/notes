@@ -167,6 +167,11 @@ body {
   font-size: 0;
 }
 
+.swiper-slide {
+  height: auto;
+  max-height: none;
+}
+
 .main {
   padding: 0 30px;
 }
@@ -401,4 +406,23 @@ body {
 
 .highlight-span {
   color: red;
+}
+
+.task {
+  position: relative;
+}
+.task__absolute-bts {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 20px;
+}
+.task__calendar img {
+  width: 40px;
+}
+.task__add img {
+  width: 40px;
 }

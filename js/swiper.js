@@ -8,4 +8,23 @@ var swiper = new Swiper('.swiper', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+    slidesPerView: 1,
+    autoHeight: true,
+});
+
+// Для отслеживания висоты
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+            swiper.update();
+        }
+    });
+});
+observer.observe(document.querySelector('.swiper-wrapper'), { childList: true, subtree: true });
+
+const noteEls = document.querySelectorAll('.main__note');
+noteEls.forEach((noteEl) => {
+    noteEl.addEventListener('click', () => {
+        swiper.update();
+    });
 });

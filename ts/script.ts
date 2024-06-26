@@ -340,42 +340,44 @@ addNoteBtnEl.addEventListener("click", event => {
 const findNoteBtn: HTMLButtonElement = document.querySelector(".main__button");
 const findNoteInput: HTMLInputElement = document.querySelector(".main__input");
 findNoteBtn.addEventListener("click", event => {
-    event.preventDefault();
-    closeChangebleMode();
-
-    const strSearch = findNoteInput.value.trim().toLowerCase();
-    const notesContainer = document.querySelector(".main__notes");
     let found = false;
+    if (findNoteInput.value) {
+        event.preventDefault();
+        closeChangebleMode();
 
-    document.querySelectorAll(".main__note").forEach(note => {
-        const noteTitle = note.querySelector(".main__title").textContent.toLowerCase();
-        const noteText = note.querySelector(".main__text").textContent.toLowerCase();
+        const strSearch = findNoteInput.value.trim().toLowerCase();
+        const notesContainer = document.querySelector(".main__notes");
 
-        if (noteTitle.includes(strSearch) || noteText.includes(strSearch)) {
-            found = true;
-            notesContainer.prepend(note);
+        document.querySelectorAll(".main__note").forEach(note => {
+            const noteTitle = note.querySelector(".main__title").textContent.toLowerCase();
+            const noteText = note.querySelector(".main__text").textContent.toLowerCase();
 
-            document.querySelectorAll(".main__note").forEach(note => {
-                const noteTitleEl = note.querySelector(".main__title");
-                const noteTextEl = note.querySelector(".main__text");
+            if (noteTitle.includes(strSearch) || noteText.includes(strSearch)) {
+                found = true;
+                notesContainer.prepend(note);
 
-                if (noteTextEl.children || noteTitleEl.children) {
-                    noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
-                    noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
-                }
-            });
-        } else {
-            document.querySelectorAll(".main__note").forEach(note => {
-                const noteTitleEl = note.querySelector(".main__title");
-                const noteTextEl = note.querySelector(".main__text");
+                document.querySelectorAll(".main__note").forEach(note => {
+                    const noteTitleEl = note.querySelector(".main__title");
+                    const noteTextEl = note.querySelector(".main__text");
 
-                if (noteTextEl.children || noteTitleEl.children) {
-                    noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
-                    noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
-                }
-            });
-        }
-    });
+                    if (noteTextEl.children || noteTitleEl.children) {
+                        noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                        noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                    }
+                });
+            } else {
+                document.querySelectorAll(".main__note").forEach(note => {
+                    const noteTitleEl = note.querySelector(".main__title");
+                    const noteTextEl = note.querySelector(".main__text");
+
+                    if (noteTextEl.children || noteTitleEl.children) {
+                        noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                        noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                    }
+                });
+            }
+        });
+    }
 
     if (!found) {
         alert("No matches found");
@@ -392,6 +394,7 @@ function escapeRegExp(string) {
 }
 
 findNoteInput.addEventListener("input", event => {
+    closeChangebleMode()
     const strSearch = findNoteInput.value.trim().toLowerCase();
     document.querySelectorAll(".main__note").forEach(note => {
         const noteTitleEl = note.querySelector(".main__title");
