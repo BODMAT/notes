@@ -398,3 +398,7 @@ body {
     font-size: calc(16px + 4 * 100vw / 1200);
   }
 }
+
+.highlight-span {
+  color: red;
+}

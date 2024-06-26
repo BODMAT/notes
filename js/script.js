@@ -1,17 +1,8 @@
 "use strict";
 //! Global
 var changeOptionOn = false;
-// Форматирование даты
-function formatDate(date) {
-    const options = { month: 'long', day: 'numeric' };
-    return date.toLocaleString('en-US', options);
-}
-// Фильтрация notes
-const filterEl = document.querySelector(".main__filter");
-const filterByEl = document.querySelector(".main__filter-by");
-filterEl.addEventListener("click", event => {
-    event.preventDefault();
-    // условие для закрытия открытых при открытии новых
+// условие для закрытия открытых при открытии новых (маразм написал ахах)
+function closeChangebleMode() {
     if (changeOptionOn) {
         changeOptionOn = false;
         document.querySelectorAll(".large-textarea").forEach(elem => {
@@ -26,6 +17,18 @@ filterEl.addEventListener("click", event => {
             }
         });
     }
+}
+// Форматирование даты
+function formatDate(date) {
+    const options = { month: 'long', day: 'numeric' };
+    return date.toLocaleString('en-US', options);
+}
+// Фильтрация notes
+const filterEl = document.querySelector(".main__filter");
+const filterByEl = document.querySelector(".main__filter-by");
+filterEl.addEventListener("click", event => {
+    event.preventDefault();
+    closeChangebleMode();
     const allNotes = document.querySelectorAll(".main__note");
     const notesArray = Array.from(allNotes);
     if (filterByEl.textContent === "By date") {
@@ -91,21 +94,7 @@ noteEls.forEach((noteEl) => {
 });
 // notes write (+svg manipulations)
 function changeNoteToWritable(btnChangeElement) {
-    // условие для закрытия открытых при открытии новых (маразм написал ахах)
-    if (changeOptionOn) {
-        changeOptionOn = false;
-        document.querySelectorAll(".large-textarea").forEach(elem => {
-            const parentOfElemWithOpenedChangeMod = elem.closest(".main__note");
-            const currentBtnEl = parentOfElemWithOpenedChangeMod.querySelector(".main__change");
-            const svgWrite = currentBtnEl.querySelector("svg");
-            const gElement = svgWrite.querySelector("g");
-            const currentFill = gElement.getAttribute("fill");
-            if (currentFill === "#fff") {
-                gElement.setAttribute("fill", "#000");
-                changeNoteToReadeble(currentBtnEl);
-            }
-        });
-    }
+    closeChangebleMode();
     const allNotesEl = document.querySelectorAll(".main__note");
     allNotesEl.forEach(note => {
         note.style.cursor = "zoom-in";
@@ -300,5 +289,65 @@ addNoteBtnEl.addEventListener("click", event => {
         const deleteBtnEl = parentNoteEl.querySelector(".main__delete");
         watchDelete(deleteBtnEl);
     }
+});
+//! find notes
+const findNoteBtn = document.querySelector(".main__button");
+const findNoteInput = document.querySelector(".main__input");
+findNoteBtn.addEventListener("click", event => {
+    event.preventDefault();
+    closeChangebleMode();
+    const strSearch = findNoteInput.value.trim().toLowerCase();
+    const notesContainer = document.querySelector(".main__notes");
+    let found = false;
+    document.querySelectorAll(".main__note").forEach(note => {
+        const noteTitle = note.querySelector(".main__title").textContent.toLowerCase();
+        const noteText = note.querySelector(".main__text").textContent.toLowerCase();
+        if (noteTitle.includes(strSearch) || noteText.includes(strSearch)) {
+            found = true;
+            notesContainer.prepend(note);
+            document.querySelectorAll(".main__note").forEach(note => {
+                const noteTitleEl = note.querySelector(".main__title");
+                const noteTextEl = note.querySelector(".main__text");
+                if (noteTextEl.children || noteTitleEl.children) {
+                    noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                    noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                }
+            });
+        }
+        else {
+            document.querySelectorAll(".main__note").forEach(note => {
+                const noteTitleEl = note.querySelector(".main__title");
+                const noteTextEl = note.querySelector(".main__text");
+                if (noteTextEl.children || noteTitleEl.children) {
+                    noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                    noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+                }
+            });
+        }
+    });
+    if (!found) {
+        alert("No matches found");
+    }
+    findNoteInput.value = "";
+});
+//доп функционал в виде постоянного выделения совпадающих символов
+//для избежания ошибок
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+findNoteInput.addEventListener("input", event => {
+    const strSearch = findNoteInput.value.trim().toLowerCase();
+    document.querySelectorAll(".main__note").forEach(note => {
+        const noteTitleEl = note.querySelector(".main__title");
+        const noteTextEl = note.querySelector(".main__text");
+        if (noteTextEl.children || noteTitleEl.children) {
+            noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+            noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(`<span class="highlight-span">(.*?)</span>`), 'g'), '$1');
+        }
+        if (strSearch && (noteTitleEl.textContent.toLowerCase().includes(strSearch) || noteTextEl.textContent.toLowerCase().includes(strSearch))) {
+            noteTextEl.innerHTML = noteTextEl.textContent.replace(new RegExp(escapeRegExp(strSearch), 'gi'), `<span class="highlight-span">$&</span>`);
+            noteTitleEl.innerHTML = noteTitleEl.textContent.replace(new RegExp(escapeRegExp(strSearch), 'gi'), `<span class="highlight-span">$&</span>`);
+        }
+    });
 });
 //# sourceMappingURL=script.js.map
