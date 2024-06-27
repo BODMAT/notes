@@ -153,8 +153,8 @@ body {
   position: absolute;
   width: 100px;
   height: 40px;
-  top: 30px;
-  right: 15px;
+  top: -90px;
+  right: 0px;
 }
 .swiper__button-prev img, .swiper__button-next img {
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
@@ -165,11 +165,6 @@ body {
 
 .swiper-button-prev::after, .swiper-button-next::after {
   font-size: 0;
-}
-
-.swiper-slide {
-  height: auto;
-  max-height: none;
 }
 
 .main {

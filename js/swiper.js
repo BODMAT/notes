@@ -10,21 +10,39 @@ var swiper = new Swiper('.swiper', {
     },
     slidesPerView: 1,
     autoHeight: true,
+
+    limitRotation: true,
+    slideShadows: true,
+    effect: 'flip',
 });
 
-// Для отслеживания висоты
-const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.type === 'childList') {
-            swiper.update();
+// Создаем мутационный наблюдатель для отслеживания изменений в DOM-элементах слайдов
+var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+        if (mutation.target.closest('.swiper-slide')) {
+            updateSwiper();
         }
     });
 });
-observer.observe(document.querySelector('.swiper-wrapper'), { childList: true, subtree: true });
 
-const noteEls = document.querySelectorAll('.main__note');
-noteEls.forEach((noteEl) => {
-    noteEl.addEventListener('click', () => {
-        swiper.update();
-    });
+// Настраиваем мутационный наблюдатель для отслеживания изменений в DOM-элементах слайдов
+observer.observe(document.querySelector('.swiper-wrapper'), {
+    childList: true,
+    subtree: true
 });
+
+// Отслеживаем изменения размеров элементов, вызванные изменением CSS-свойств
+var resizeObserver = new ResizeObserver(function () {
+    updateSwiper();
+});
+
+// Наблюдаем за изменениями размеров элементов
+var elements = document.querySelectorAll('.swiper-slide, .textarea, .ellipsis');
+elements.forEach(function (element) {
+    resizeObserver.observe(element);
+});
+
+function updateSwiper() {
+    // Обновляем Swiper
+    swiper.update();
+}

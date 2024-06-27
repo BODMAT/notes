@@ -91,8 +91,8 @@ body {
         position: absolute;
         width: 100px;
         height: 40px;
-        top: 30px;
-        right: 15px;
+        top: -90px;
+        right: 0px;
     }
 
     &__button-prev, &__button-next {
@@ -108,10 +108,6 @@ body {
     font-size: 0;
 }
 
-.swiper-slide {
-    height: auto;
-    max-height: none;
-}
 //================================================================================================
 
 .main {
