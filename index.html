@@ -105,53 +105,162 @@
                         </section>
                     </div>
                     <div class="swiper-slide">
-                        <div class="task">
-                            <div class="task__content">
-                                <section class="task__items">
-                                    <div class="task__item">
-                                        <div class="task__checkbox">
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="task__info">
-                                            <div class="task__text">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                                elit. Voluptate facilis consequatur temporibus commodi ipsa animi
-                                                laboriosam aliquid nihil officiis? Veritatis eaque vero dolorum
-                                                perferendis blanditiis iusto voluptate tempora, culpa eligendi.
-                                                Hic iusto in, temporibus sapiente praesentium incidunt earum officia
-                                                necessitatibus ut modi dolor sequi totam cum vero eaque animi
-                                                reprehenderit repellat veritatis ratione! Culpa at fugit corrupti
-                                                mollitia repudiandae laudantium?</div>
-                                            <div class="task__deadline">30.06.24</div>
-                                        </div>
-                                    </div>
-                                    <div class="task__item">
-                                        <div class="task__checkbox">
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="task__info">
-                                            <div class="task__text">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                                elit. Voluptate facilis consequatur temporibus commodi ipsa animi
-                                                laboriosam aliquid nihil officiis? Veritatis eaque vero dolorum
-                                                perferendis blanditiis iusto voluptate tempora, culpa eligendi.
-                                                Hic iusto in, temporibus sapiente praesentium incidunt earum officia
-                                                necessitatibus ut modi dolor sequi totam cum vero eaque animi
-                                                reprehenderit repellat veritatis ratione! Culpa at fugit corrupti
-                                                mollitia repudiandae laudantium?</div>
-                                            <div class="task__deadline">30.06.24</div>
-                                        </div>
-                                    </div>
-                                </section>
-
-                            </div>
-                            <div class="task__absolute-bts">
-                                <button class="task__calendar">
+                        <section class="task__menu">
+                            <div class="task__calendar">
+                                <button class="task__calendar-btn">
                                     <img src="img/calendar.svg" alt="calendar">
+                                    <div class="task__calendar-txt">View calendar</div>
                                 </button>
-                                <button class="task__add">
+                            </div>
+                            <div class="task__btns">
+                                <button class="task__filter">
+                                    <img src="img/filter.svg" alt="filter">
+                                    <div class="task__filter-by">From newest</div>
+                                </button>
+                                <button class="task__add-note">
                                     <img src="img/add-note.svg" alt="add">
                                 </button>
                             </div>
-                        </div>
+                        </section>
+                        <section class="task__items">
+                            <div class="task__item">
+                                <label class="task__checkbox">
+                                    <input class="checkbox" type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <div class="task__info">
+                                    <div class="task__text">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                                        elit. Voluptate facilis consequatur temporibus commodi ipsa animi
+                                        laboriosam aliquid nihil officiis? Veritatis eaque vero dolorum
+                                        perferendis blanditiis iusto voluptate tempora, culpa eligendi.
+                                        Hic iusto in, temporibus sapiente praesentium incidunt earum officia
+                                        necessitatibus ut modi dolor sequi totam cum vero eaque animi
+                                        reprehenderit repellat veritatis ratione! Culpa at fugit corrupti
+                                        mollitia repudiandae laudantium?
+                                    </div>
+                                    <div class="task__bottom">
+                                        <div class="task__date">
+                                            <div class="task__static-info">Deadline by: </div>
+                                            <div class="task__date-info">25.06.2024</div>
+                                        </div>
+                                        <div class="task__bottom-buttons">
+                                            <button class="task__change">
+                                                <svg enable-background="new 0 0 64 64" height="40px" id="Layer_1"
+                                                    version="1.1" viewBox="0 0 64 64" width="40px" xml:space="preserve"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <g fill="#000">
+                                                        <path
+                                                            d="M55.736,13.636l-4.368-4.362c-0.451-0.451-1.044-0.677-1.636-0.677c-0.592,0-1.184,0.225-1.635,0.676l-3.494,3.484   l7.639,7.626l3.494-3.483C56.639,15.998,56.639,14.535,55.736,13.636z" />
+                                                        <polygon
+                                                            points="21.922,35.396 29.562,43.023 50.607,22.017 42.967,14.39    " />
+                                                        <polygon points="20.273,37.028 18.642,46.28 27.913,44.654  " />
+                                                        <path
+                                                            d="M41.393,50.403H12.587V21.597h20.329l5.01-5H10.82c-1.779,0-3.234,1.455-3.234,3.234v32.339   c0,1.779,1.455,3.234,3.234,3.234h32.339c1.779,0,3.234-1.455,3.234-3.234V29.049l-5,4.991V50.403z" />
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                            <button class="task__delete">
+                                                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <style>
+                                                            .cls-1 {
+                                                                fill: none;
+                                                            }
+                                                        </style>
+                                                    </defs>
+                                                    <title />
+                                                    <g data-name="Layer 2" id="Layer_2">
+                                                        <path
+                                                            d="M20,29H12a5,5,0,0,1-5-5V12a1,1,0,0,1,2,0V24a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V12a1,1,0,0,1,2,0V24A5,5,0,0,1,20,29Z"
+                                                            fill="#000" />
+                                                        <path d="M26,9H6A1,1,0,0,1,6,7H26a1,1,0,0,1,0,2Z" fill="#000" />
+                                                        <path
+                                                            d="M20,9H12a1,1,0,0,1-1-1V6a3,3,0,0,1,3-3h4a3,3,0,0,1,3,3V8A1,1,0,0,1,20,9ZM13,7h6V6a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1Z"
+                                                            fill="#000" />
+                                                        <path
+                                                            d="M14,23a1,1,0,0,1-1-1V15a1,1,0,0,1,2,0v7A1,1,0,0,1,14,23Z"
+                                                            fill="#000" />
+                                                        <path
+                                                            d="M18,23a1,1,0,0,1-1-1V15a1,1,0,0,1,2,0v7A1,1,0,0,1,18,23Z"
+                                                            fill="#000" />
+                                                    </g>
+                                                    <g id="frame">
+                                                        <rect class="cls-1" height="38" width="38" />
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task__item">
+                                <label class="task__checkbox">
+                                    <input class="checkbox" type="checkbox">
+                                    <span class="custom-checkbox"></span>
+                                </label>
+                                <div class="task__info">
+                                    <div class="task__text">
+                                        Lorem ipsum aboba
+                                    </div>
+                                    <div class="task__bottom">
+                                        <div class="task__date">
+                                            <div class="task__static-info">Deadline by: </div>
+                                            <div class="task__date-info">30.06.2024</div>
+                                        </div>
+                                        <div class="task__bottom-buttons">
+                                            <button class="task__change">
+                                                <svg enable-background="new 0 0 64 64" height="40px" id="Layer_1"
+                                                    version="1.1" viewBox="0 0 64 64" width="40px" xml:space="preserve"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <g fill="#000">
+                                                        <path
+                                                            d="M55.736,13.636l-4.368-4.362c-0.451-0.451-1.044-0.677-1.636-0.677c-0.592,0-1.184,0.225-1.635,0.676l-3.494,3.484   l7.639,7.626l3.494-3.483C56.639,15.998,56.639,14.535,55.736,13.636z" />
+                                                        <polygon
+                                                            points="21.922,35.396 29.562,43.023 50.607,22.017 42.967,14.39    " />
+                                                        <polygon points="20.273,37.028 18.642,46.28 27.913,44.654  " />
+                                                        <path
+                                                            d="M41.393,50.403H12.587V21.597h20.329l5.01-5H10.82c-1.779,0-3.234,1.455-3.234,3.234v32.339   c0,1.779,1.455,3.234,3.234,3.234h32.339c1.779,0,3.234-1.455,3.234-3.234V29.049l-5,4.991V50.403z" />
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                            <button class="task__delete">
+                                                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <style>
+                                                            .cls-1 {
+                                                                fill: none;
+                                                            }
+                                                        </style>
+                                                    </defs>
+                                                    <title />
+                                                    <g data-name="Layer 2" id="Layer_2">
+                                                        <path
+                                                            d="M20,29H12a5,5,0,0,1-5-5V12a1,1,0,0,1,2,0V24a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V12a1,1,0,0,1,2,0V24A5,5,0,0,1,20,29Z"
+                                                            fill="#000" />
+                                                        <path d="M26,9H6A1,1,0,0,1,6,7H26a1,1,0,0,1,0,2Z" fill="#000" />
+                                                        <path
+                                                            d="M20,9H12a1,1,0,0,1-1-1V6a3,3,0,0,1,3-3h4a3,3,0,0,1,3,3V8A1,1,0,0,1,20,9ZM13,7h6V6a1,1,0,0,0-1-1H14a1,1,0,0,0-1,1Z"
+                                                            fill="#000" />
+                                                        <path
+                                                            d="M14,23a1,1,0,0,1-1-1V15a1,1,0,0,1,2,0v7A1,1,0,0,1,14,23Z"
+                                                            fill="#000" />
+                                                        <path
+                                                            d="M18,23a1,1,0,0,1-1-1V15a1,1,0,0,1,2,0v7A1,1,0,0,1,18,23Z"
+                                                            fill="#000" />
+                                                    </g>
+                                                    <g id="frame">
+                                                        <rect class="cls-1" height="38" width="38" />
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
 
