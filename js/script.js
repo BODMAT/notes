@@ -129,6 +129,7 @@ function changeNoteToWritable(btnChangeElement) {
     const date = parentNote.querySelector(".main__date");
     const myDate = new Date();
     date.textContent = formatDate(myDate);
+    newPlaceholder.focus();
     btnChangeElement.addEventListener("click", event => {
         event.preventDefault();
         const svgWrite = btnChangeElement.querySelector("svg");
@@ -137,6 +138,17 @@ function changeNoteToWritable(btnChangeElement) {
         if (currentFill === "#fff") {
             gElement.setAttribute("fill", "#000");
             changeNoteToReadeble(btnChangeElement);
+        }
+    });
+    document.addEventListener("keydown", event => {
+        if (event.key === "Enter" && document.activeElement !== newPlaceholder) {
+            const svgWrite = btnChangeElement.querySelector("svg");
+            const gElement = svgWrite.querySelector("g");
+            const currentFill = gElement.getAttribute("fill");
+            if (currentFill === "#fff") {
+                gElement.setAttribute("fill", "#000");
+                changeNoteToReadeble(btnChangeElement);
+            }
         }
     });
 }
