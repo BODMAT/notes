@@ -365,4 +365,318 @@ filterTaskBtn.addEventListener("click", event => {
         tasksContainer.appendChild(task);
     });
 });
+//!Calendar 
+//проверка на высокостный год
+function isLeapYear(year) {
+    if (year % 400 === 0) {
+        return true;
+    }
+    else if (year % 100 === 0) {
+        return false;
+    }
+    else if (year % 4 === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+const calendar = document.querySelector(".task__calendar");
+calendar.addEventListener("click", event => {
+    updateCalendar(new Date().getMonth(), new Date().getFullYear());
+});
+function updateCalendar(rightMonth, rightYear) {
+    const dateInfoElements = document.querySelectorAll(".task__date-info");
+    const dateInfoArray = Array.from(dateInfoElements);
+    const now = new Date();
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const currentYear = rightYear;
+    const formattedDate = monthNames[rightMonth] + " " + currentYear;
+    document.querySelector(".popup__month-year").textContent = formattedDate;
+    //выставляю нужное количество дней для каждого месяца
+    //31
+    const dateTable = document.querySelector(".popup__days");
+    if (rightMonth === 0 || rightMonth === 2 || rightMonth === 4 || rightMonth === 6 || rightMonth === 7 || rightMonth === 9 || rightMonth === 11) {
+        dateTable.innerHTML = `<tr>
+                                                                <td>01</td>
+                                                                <td>08</td>
+                                                                <td>15</td>
+                                                                <td>22</td>
+                                                                <td>29</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>02</td>
+                                                                <td>09</td>
+                                                                <td>16</td>
+                                                                <td>23</td>
+                                                                <td>30</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>03</td>
+                                                                <td>10</td>
+                                                                <td>17</td>
+                                                                <td>24</td>
+                                                                <td>31</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>04</td>
+                                                                <td>11</td>
+                                                                <td>18</td>
+                                                                <td>25</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>05</td>
+                                                                <td>12</td>
+                                                                <td>19</td>
+                                                                <td>26</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>06</td>
+                                                                <td>13</td>
+                                                                <td>20</td>
+                                                                <td>27</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07</td>
+                                                                <td>14</td>
+                                                                <td>21</td>
+                                                                <td>28</td>
+                                                                <td></td>
+                                                            </tr>`;
+    }
+    else if (rightMonth === 1 && isLeapYear(currentYear)) {
+        //Февраль высокостный
+        dateTable.innerHTML = `<tr>
+                                <td>01</td>
+                                <td>08</td>
+                                <td>15</td>
+                                <td>22</td>
+                                <td>29</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>09</td>
+                                <td>16</td>
+                                <td>23</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>10</td>
+                                <td>17</td>
+                                <td>24</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>11</td>
+                                <td>18</td>
+                                <td>25</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>12</td>
+                                <td>19</td>
+                                <td>26</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>13</td>
+                                <td>20</td>
+                                <td>27</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td>14</td>
+                                <td>21</td>
+                                <td>28</td>
+                                <td></td>
+                            </tr>`;
+    }
+    else if (rightMonth === 1 && !isLeapYear(currentYear)) {
+        //Февраль не высокостный
+        dateTable.innerHTML = `<tr>
+                                <td>01</td>
+                                <td>08</td>
+                                <td>15</td>
+                                <td>22</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>09</td>
+                                <td>16</td>
+                                <td>23</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>10</td>
+                                <td>17</td>
+                                <td>24</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>11</td>
+                                <td>18</td>
+                                <td>25</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>12</td>
+                                <td>19</td>
+                                <td>26</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>13</td>
+                                <td>20</td>
+                                <td>27</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td>14</td>
+                                <td>21</td>
+                                <td>28</td>
+                                <td></td>
+                            </tr>`;
+    }
+    else {
+        //30
+        dateTable.innerHTML = `<tr>
+                                                                <td>01</td>
+                                                                <td>08</td>
+                                                                <td>15</td>
+                                                                <td>22</td>
+                                                                <td>29</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>02</td>
+                                                                <td>09</td>
+                                                                <td>16</td>
+                                                                <td>23</td>
+                                                                <td>30</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>03</td>
+                                                                <td>10</td>
+                                                                <td>17</td>
+                                                                <td>24</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>04</td>
+                                                                <td>11</td>
+                                                                <td>18</td>
+                                                                <td>25</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>05</td>
+                                                                <td>12</td>
+                                                                <td>19</td>
+                                                                <td>26</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>06</td>
+                                                                <td>13</td>
+                                                                <td>20</td>
+                                                                <td>27</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07</td>
+                                                                <td>14</td>
+                                                                <td>21</td>
+                                                                <td>28</td>
+                                                                <td></td>
+                                                            </tr>`;
+    }
+    //Выделю в календаре текущую дату
+    if (now.getMonth() === rightMonth && now.getFullYear() === rightYear) {
+        dateTable.querySelectorAll("td").forEach(td => {
+            if (td.textContent === String(now.getDate())) {
+                console.log(111);
+                td.style.fontWeight = "900";
+            }
+        });
+    }
+    //проверка есть ли дедлайн в этом месяце и году и дальнейшее выделение
+    dateInfoArray.forEach((dateEl) => {
+        const date = dateEl.textContent;
+        const [day, month, year] = date.split('.').map(part => parseInt(part, 10));
+        // console.log(rightMonth + 1, currentYear);
+        // console.log(`Day: ${day}, Month: ${month}, Year: ${year}`);
+        if (month === rightMonth + 1 && year === currentYear) {
+            dateTable.querySelectorAll("td").forEach(td => {
+                if (Number(td.textContent) === day) {
+                    td.style.fontWeight = "600";
+                    const now = new Date();
+                    const currentDay = now.getDate();
+                    const currentMonth = now.getMonth();
+                    const currentYear = now.getFullYear();
+                    if (year > currentYear || (year === currentYear && month > currentMonth + 1) || (year === currentYear && month === currentMonth + 1 && day > currentDay)) {
+                        td.style.backgroundColor = "green";
+                    }
+                    else if (year < currentYear || (year === currentYear && month < currentMonth + 1) || (year === currentYear && month === currentMonth + 1 && day < currentDay)) {
+                        td.style.backgroundColor = "red";
+                    }
+                    if (dateEl.closest(".task__item").classList.contains("active-checkbox-parent")) {
+                        td.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                    }
+                }
+            });
+        }
+    });
+    //Ожидаю возможного листания по месяцам
+    const btnPrev = document.querySelector(".popup__prev");
+    const btnNext = document.querySelector(".popup__next");
+    function handleClick(event) {
+        if (event.target === btnPrev) {
+            changeCalendarToPrev(rightMonth, rightYear);
+        }
+        else if (event.target === btnNext) {
+            changeCalendarToNext(rightMonth, rightYear);
+        }
+        btnPrev.removeEventListener("click", handleClick);
+        btnNext.removeEventListener("click", handleClick);
+    }
+    btnPrev.addEventListener("click", handleClick);
+    btnNext.addEventListener("click", handleClick);
+}
+function changeCalendarToPrev(month, year) {
+    let currentMonth = month;
+    let currentYear = year;
+    if (month === 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    else {
+        currentMonth--;
+    }
+    updateCalendar(currentMonth, currentYear);
+}
+function changeCalendarToNext(month, year) {
+    let currentMonth = month;
+    let currentYear = year;
+    if (month === 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    else {
+        currentMonth++;
+    }
+    updateCalendar(currentMonth, currentYear);
+}
 //# sourceMappingURL=script-tasks.js.map

@@ -14,7 +14,7 @@
 
 <body>
     <div class="wrapper">
-        <header class="header">
+        <header class="header lock-padding">
             <a href="" class="header__logo">
                 <img src="img/logo.svg" alt="logo">
                 <h1 class="header__text">Notes</h1>
@@ -161,10 +161,10 @@
                     <div class="swiper-slide">
                         <section class="task__menu">
                             <div class="task__calendar">
-                                <button class="task__calendar-btn">
+                                <a href="#popup" class="task__calendar-btn popup-link">
                                     <img src="img/calendar.svg" alt="calendar">
                                     <div class="task__calendar-txt">View calendar</div>
-                                </button>
+                                </a>
                             </div>
                             <div class="task__btns">
                                 <button class="task__filter">
@@ -190,7 +190,7 @@
                                     <div class="task__bottom">
                                         <div class="task__date">
                                             <div class="task__static-info">Deadline by: </div>
-                                            <div class="task__date-info">25.06.2028</div>
+                                            <div class="task__date-info">25.09.2024</div>
                                         </div>
                                         <div class="task__bottom-buttons">
                                             <button class="task__change">
@@ -317,7 +317,7 @@
                                     <div class="task__bottom">
                                         <div class="task__date">
                                             <div class="task__static-info">Deadline by: </div>
-                                            <div class="task__date-info">29.06.2023</div>
+                                            <div class="task__date-info">07.07.2024</div>
                                         </div>
                                         <div class="task__bottom-buttons">
                                             <button class="task__change">
@@ -389,10 +389,77 @@
         <div class="fullscreen__filter"></div>
         <img src="img/background.jpg" alt="background">
     </div>
+    <div id="popup" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#header" class="popup__close close-popup"></a>
+                <div class="popup__title">Tasks calendar</div>
+                <div class="popup__info">
+                    <button class="popup__prev"></button>
+                    <div class="popup__table">
+                        <div class="popup__month-year">June 2024</div>
+                        <table class="popup__days">
+                            <tr>
+                                <td>01</td>
+                                <td>08</td>
+                                <td>15</td>
+                                <td>22</td>
+                                <td>29</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>09</td>
+                                <td>16</td>
+                                <td>23</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>10</td>
+                                <td>17</td>
+                                <td>24</td>
+                                <td>31</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>11</td>
+                                <td>18</td>
+                                <td>25</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>12</td>
+                                <td>19</td>
+                                <td>26</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>13</td>
+                                <td>20</td>
+                                <td>27</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td>14</td>
+                                <td>21</td>
+                                <td>28</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button class="popup__next"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="js/swiper.js"></script>
     <script src="js/script.js"></script>
     <script src="js/script-tasks.js"></script>
+    <script src="js/popups.js"></script>
 </body>
 
 </html>
