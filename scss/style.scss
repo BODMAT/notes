@@ -33,12 +33,14 @@ body.lock {
     display: flex;
     flex-direction: column;
 
-    max-width: 1230px;
     margin: 0 auto;
     padding: 0 15px;
 
     position: relative;
     z-index: 2;
+    @media (min-width: 1000px) {
+        padding: 0 40px;
+    }
 }
 
 .fullscreen {
